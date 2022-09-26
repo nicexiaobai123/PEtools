@@ -34,7 +34,6 @@ public:
 	}
 
 public:
-	// 重定位表32位在第5个 ，64位在第7个
 	DWORD get_relocate_rva()const { return poption_header->DataDirectory[5].VirtualAddress; }
 	DWORD get_tlsrva()const { return poption_header->DataDirectory[9].VirtualAddress; }
 	DWORD get_export_rva()const { return poption_header->DataDirectory[0].VirtualAddress; }
@@ -186,7 +185,7 @@ public:
 	}
 };
 
-//  主要获取PE各个属性
+//  这个继承只是让一些成员公有化
 class PEGet :public PEtools
 {
 public:
@@ -194,6 +193,7 @@ public:
 	PEGet(const string& file_name) :PEtools(file_name)
 	{	}
 public:
+	using PEtools::pdos_header;
 	using PEtools::pfile_header;
 	using PEtools::poption_header;
 	using PEtools::pfirst_section_header;

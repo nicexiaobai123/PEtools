@@ -13,7 +13,7 @@ bool PEtools::init_filename_data(const string& file_name)
 {
 	// 打开文件
 	HANDLE hfile{ 0 };
-	hfile = CreateFileA(file_name.c_str(), GENERIC_READ, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+	hfile = CreateFileA(file_name.c_str(), GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
 	if (hfile == INVALID_HANDLE_VALUE) { return false; }
 
 	// 得到大小
